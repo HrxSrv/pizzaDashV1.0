@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth" // Adjust path as needed
-
+import PizzaIcon from "@/public/pizza1.png" // Adjust path as needed
 export default async function Home() {
   const session = await getServerSession(authOptions)
 
@@ -74,9 +74,9 @@ export default async function Home() {
               </div>
               <div className="flex justify-center">
                 <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/1200px-Pizza-3007395.jpg"
-                  width={550}
-                  height={550}
+                  src={PizzaIcon}
+                  width={450}
+                  height={450}
                   alt="Dashboard Preview"
                   className="rounded-lg object-cover"
                 />
