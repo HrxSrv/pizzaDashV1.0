@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/components/auth-provider"
 import { validateEnv } from "./env"
 
-// Validate environment variables
+
 validateEnv()
 
 const inter = Inter({ subsets: ["latin"] })

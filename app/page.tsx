@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "@/lib/auth" // Adjust path as needed
-import PizzaIcon from "@/public/pizza1.png" // Adjust path as needed
+import { authOptions } from "@/lib/auth" 
+import PizzaIcon from "@/public/pizza1.png" 
 export default async function Home() {
   const session = await getServerSession(authOptions)
 
