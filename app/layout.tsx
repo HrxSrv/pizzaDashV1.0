@@ -14,6 +14,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "PizzaDash - Pizza Order Dashboard",
   description: "A dashboard for managing pizza orders",
+  icons: {
+    icon: "/favicon.png",
+  },
 }
 
 export default function RootLayout({
