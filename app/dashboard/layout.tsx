@@ -18,12 +18,24 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex min-h-screen flex-col mx-auto">
+    <div className="flex min-h-screen flex-col">
       <AuthStatus />
       <DashboardHeader user={session.user} />
-      <div className="container mx-auto flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-        <DashboardSidebar />
-        <main className="flex w-full flex-col overflow-hidden pt-6">{children}</main>
+      
+      <div className="flex-1 md:hidden">
+        <main className="flex w-full flex-col overflow-hidden p-4 sm:p-6">
+          {children}
+        </main>
+      </div>
+
+  
+      <div className="hidden md:flex flex-1">
+        <div className="container mx-auto flex-1 items-start grid grid-cols-[220px_minmax(0,1fr)] gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
+          <DashboardSidebar />
+          <main className="flex w-full flex-col overflow-hidden pt-6">
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 "use client"
 import type { User } from "next-auth"
 import { signOut } from "next-auth/react"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -10,16 +11,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Menu, UserIcon, LogOut } from "lucide-react"
+import { Menu, UserIcon, LogOut, Home, PizzaIcon } from "lucide-react"
 import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { DashboardSidebar } from "./sidebar"
 
 interface DashboardHeaderProps {
   user: User | undefined
 }
 
 export function DashboardHeader({ user }: DashboardHeaderProps) {
+  const pathname = usePathname()
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center px-4 sm:px-6">
@@ -61,8 +63,29 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
                   </Link>
                 </SheetTitle>
               </SheetHeader>
-              <div className="h-full">
-                <DashboardSidebar />
+              
+              {/* Mobile Navigation Menu */}
+              <div className="flex flex-col space-y-2">
+                <Button 
+                  asChild 
+                  variant={pathname === "/dashboard" ? "secondary" : "ghost"} 
+                  className="w-full justify-start"
+                >
+                  <Link href="/dashboard">
+                    <Home className="mr-2 h-4 w-4" />
+                    Home
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant={pathname === "/dashboard/orders" ? "secondary" : "ghost"}
+                  className="w-full justify-start"
+                >
+                  <Link href="/dashboard/orders">
+                    <PizzaIcon className="mr-2 h-4 w-4" />
+                    Orders
+                  </Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
